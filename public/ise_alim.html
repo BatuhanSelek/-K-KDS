@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizler</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/adminlte.min.css"
+        integrity="sha512-IuO+tczf4J43RzbCMEFggCWW5JuX78IrCJRFFBoQEXNvGI6gkUw4OjuwMidiS4Lm9Q2lILzpJwZuMWuSEeT9UQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js"
+        integrity="sha512-KBeR1NhClUySj9xBB0+KRqYLPkM6VvXiiWaSz/8LCQNdRpUm38SWUrj0ccNDNSkwCD9qPA4KobLliG26yPppJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"
+        integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"
+        integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css"
+        integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var table = $("#basvuran_tablo").DataTable({
+                searching: false,
+                lengthChange: false,
+                info: false,
+                scrollX: true,
+                fixedHeader: true,
+                paging: true,
+                ajax: {
+                    url: "http://localhost:3000/api/basvuran_getir",
+                    type: "GET",
+                    dataSrc: 'data'
+                },
+                columns: [
+                    { data: "basvuran_ad" },
+                    { data: "basvuran_soyad" },
+                    { data: "basvuran_dogum_tarihi" },
+                    { data: "basvurulan_pozisyon" },
+                    { data: "basvuru_tarihi" },
+
+
+
+                ]
+            })
+
+
+        })
+
+
+    </script>
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="navbar-item">
+                    <a class="navbar-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/login.html" class="nav-link" data-widget="control-sidebar" data-slide="true" role="button">
+                        <span id="geri">Çıkış</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <a href="#" class="brand-link">
+                <span class="brand-text font-weight-light">İşe Alım</span>
+            </a>
+
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="#" class="d-block">
+                            <span id="sirket_adi">BilgiTek Yazılım</span>
+                        </a>
+                    </div>
+                </div>
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                <p>Analizler</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="calisan.html" class="nav-link">
+                                <i class="fa-solid fa-person"></i>
+                                <p>Çalışan Yönetimi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="ise_alim.html" class="nav-link">
+                                <i class="fa-solid fa-fax"></i>
+                                <p>İşe Alım Yönetimi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="egitim_yonetimi.html" class="nav-link">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                <p>Eğitim Yönetimi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="performans.html" class="nav-link">
+                                <i class="fa-solid fa-chart-simple"></i>
+                                <p>Performans</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="grafik.html" class="nav-link">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                <p>Grafikler</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="filtrele.html" class="nav-link">
+                                <i class="fa-solid fa-chart-pie"></i>
+                                <p>Filtrele</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="info-box" style="background-color: #343a40;">
+                            <span class="info-box-icon bg-warning"><i
+                                    class="fa-solid fa-person-walking-arrow-loop-left"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text" style="color: white; font-size: 25px;">Toplam Başvuru Sayısı
+                                </span>
+                                <span class="info-box-number" style="color: white; font-size: 25px;"
+                                    id="totalBasvuru">Yükleniyor...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="info-box" style="background-color: #343a40;">
+                            <span class="info-box-icon bg-danger"><i
+                                    class="fa-solid fa-comment-medical"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text" style="color: white; font-size: 25px;">En Çok Başvurulan
+                                    Pozisyon
+                                </span>
+                                <span class="info-box-number" style="color: white; font-size: 25px;"
+                                    id="basvuruPozisyon">İdari İşler</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+            <section class="content">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="basvuran_tablo" class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Başvuran Ad:</th>
+                                    <th>Başvuran Soyad:</th>
+                                    <th>Doğum Tarihi:</th>
+                                    <th>Başvurulan Pozisyon:</th>
+                                    <th>Başvuru Tarihi:</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </section>
+        </div>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Versiyon 1.0</b>
+            </div>
+            <strong>Copyright 2023<a href="" #>Müşteri Admin Panel</a></strong>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/api/totalBasvuru')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('totalBasvuru').textContent = data[0].totalBasvuru + ' Kişi';
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    document.getElementById('totalBasvuru').textContent = 'Bilgi alınamadı';
+                });
+        });
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('/api/basvurulanPozisyon')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('basvurulanPozisyon').innerText = data[0].basvurulanPozisyon + ' Kişi';
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    document.getElementById('basvurulanPozisyon').textContent = 'Bilgi alınamadı';
+                });
+        });
+
+    </script>
+</body>
+
+</html>
